@@ -10,8 +10,8 @@ Include 'ngQ' in your controller. You can find it in `ngQ/js/main.js`
 ngQ needs `AngularJS 1.x.x` and `jquery 1.10.x` to run. The fastest way to do it would be to include  [AngularJS 1.7](https://code.angularjs.org/1.5.5/angular.js). 
 
 `ngQ` is implented as a angular factory so you need to inject it in your controller and then set it up as :
-
-```.controller('controllerName', ['ngQ',function(ngQ) { 
+```javascript
+    .controller('controllerName', ['ngQ',function(ngQ) { 
     	var myQueue = new ngQ();
     } 
   
@@ -30,7 +30,8 @@ ngQ needs `AngularJS 1.x.x` and `jquery 1.10.x` to run. The fastest way to do it
     
     myQueue.deQueue('fun 1');
     
-    myQueue.initQueue();```
+    myQueue.initQueue();
+```
 
 ####Methods
 
