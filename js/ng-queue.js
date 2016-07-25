@@ -1,8 +1,17 @@
-﻿app.factory('ngQ', ['$timeout', '$q', function($timeout, $q) {
+
+//
+//  ng-queue.js
+//
+//  Created by Vasu SHeoran on 25/06/16.
+//  Copyright (c) 2016 Vasu Sheoran. All rights reserved.
+//
+
+app.factory('ngQ', ['$timeout', '$q', function($timeout, $q) {
 
     var queue = [];
     var name = [];
     var result = [];
+
 
     function Manager() {
         this.queue = queue;
@@ -43,6 +52,14 @@
             currentElement = myFunction;
         }
 
+        /**
+         * Adds a new element to the queue.
+         *
+         * @param {element} function name(params) {}
+         * @param {params} Array
+         *
+         * @return {void}
+         */
         function enQueue(element, params) {
             try {
 
@@ -67,6 +84,15 @@
             }
             return false;
         }
+
+        
+        /**
+         * Removes an element from the queue.
+         *
+         * @param {name} String
+         *
+         * @return {void}
+         */
 
         function deQueue(name) {
             if (name)
@@ -116,6 +142,13 @@
             });
         }
 
+        /** 
+         * Inititalizes the queue.
+         *
+         * @param {value} Boolean
+         *
+         * @return {void}
+         */
         function initQueue(value) {
             if (!value) {
                 var promise;
