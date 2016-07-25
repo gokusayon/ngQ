@@ -11,20 +11,18 @@ ngQ needs `AngularJS 1.x.x` and `jquery 1.10.x` to run. The fastest way to do it
 
 `ngQ` is implented as a angular factory so you need to inject it in your controller and then set it up as :
 ```javascript
-    .controller('controllerName', ['ngQ',function(ngQ) { 
+    .controller('controllerName', ['ngQ','$timeout',function(ngQ,$timeout) { 
     	var myQueue = new ngQ();
     } 
   
     myQueue.enQueue(function fun3() {
-            $timeout(function() {
+        $timeout(function() {
                 console.log("Executing fun3");
-                $el.css("color", "red");
           }, 500);
     });
     myQueue.enQueue(function fun2() {
         $timeout(function() {
             console.log("Executing fun2");
-            $el.css("color", "green");
         }, 1000);
     });
     
