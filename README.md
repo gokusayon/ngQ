@@ -12,35 +12,46 @@ ngQ needs `AngularJS 1.x.x` and `jquery 1.10.x` to run. The fastest way to do it
 `ngQ` is implented as a angular factory so you need to inject it in your controller and then set it up as :
 ```javascript
     .controller('controllerName', ['ngQ','$timeout',function(ngQ,$timeout) { 
+	
     	var myQueue = new ngQ();
-    } 
-  
-    myQueue.enQueue(function fun3() {
-        $timeout(function() {
-                console.log("Executing fun3");
-          }, 500);
-    });
-    myQueue.enQueue(function fun2() {
-        $timeout(function() {
-            console.log("Executing fun2");
-        }, 1000);
-    });
-    
-    myQueue.deQueue('fun 1');
-    
-    myQueue.initQueue();
+        
+        var testFunction = function fun1() {
+            $timeout(function() {
+                console.log("Executing fun1");
+            }, 2000);
+            return "Test";
+        }
+      
+        myQueue.enQueue(function fun3() {
+            $timeout(function() {
+                    console.log("Executing fun3");
+              }, 500);
+        });
+        
+        myQueue.enQueue(function fun2() {
+            $timeout(function() {
+                console.log("Executing fun2");
+            }, 1000);
+        });
+        
+        myQueue.enQueue(testFunction);
+        
+        myQueue.deQueue('fun 1');   //removes 'fun 1' alias testFunction.
+        
+        myQueue.initQueue();        //Begins Queue Exection.
+    }
 ```
 
 ####Methods
 
 | Name        | Arguments           | Description  |
 | ------------- |:-------------:| -----:|
-| enQueue      | element |It takes a function to be queued as an argument.|
-|                     | params |Parameter values for the function.  |
-| deQueue     | null   |Execute and remove the last element from queue  |
-| 	          | name   |Search, execute and remove the function from queue  |
-| initQueue | null/false      |Strictly implement the queue in order |
-| 	       | true      |Executes in order but does not wait explicitly to call the next funtion.  |
+| enQueue| element |It takes a function to be queued as an argument.|
+|| params |Parameter values for the function.  |
+|deQueue| null|Execute and remove the last element from queue  |
+|| name|Search, execute and remove the function from queue  |
+|initQueue | false|Strictly implement the queue in order |
+||true|Executes in order but does not wait explicitly to call the next funtion.  |
 
 ####Results
 
